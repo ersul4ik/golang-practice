@@ -10,6 +10,12 @@ func multiple(a, b string) (string, string) {
 	return a, b
 }
 
+func pointer() {
+	x := 5
+	a := &x // memory address
+	fmt.Println(*a == 5)
+}
+
 func main() {
 	var fNum, sNum int
 
