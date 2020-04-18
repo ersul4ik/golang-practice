@@ -1,33 +1,21 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net/http"
+)
 
-func multiplication(a int, b int) int {
-	return a * b
+// HomeHandler return simple text
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Whoa, Go is neat!")
 }
 
-func multiple(a, b string) (string, string) {
-	return a, b
-}
-
-func pointer() {
-	x := 5
-	a := &x // memory address
-	fmt.Println(*a == 5)
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "About page")
 }
 
 func main() {
-	var fNum, sNum int
-
-	_, err := fmt.Scan(&fNum, &sNum)
-	if err != nil {
-		fmt.Print(err)
-		return
-	}
-
-	result := multiplication(fNum, sNum)
-	fmt.Printf("Input Numbers Multiplication is: %d\n", result)
-
-	w1, w2 := "Hey", "there"
-	fmt.Println(multiple(w1, w2))
+	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/about/", aboutHandler)
+	http.ListenAndServe(":8000", nil)
 }
