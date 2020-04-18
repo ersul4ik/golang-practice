@@ -2,8 +2,12 @@ package main
 
 import "fmt"
 
-func multiply(a int, b int) int {
+func multiplication(a int, b int) int {
 	return a * b
+}
+
+func multiple(a, b string) (string, string) {
+	return a, b
 }
 
 func main() {
@@ -15,7 +19,9 @@ func main() {
 		return
 	}
 
-	multiply := multiply(fNum, sNum)
+	result := multiplication(fNum, sNum)
+	fmt.Printf("Input Numbers Multiplication is: %d\n", result)
 
-	fmt.Printf("Input Numbers Multiplication is: %d", multiply)
+	w1, w2 := "Hey", "there"
+	fmt.Println(multiple(w1, w2))
 }
